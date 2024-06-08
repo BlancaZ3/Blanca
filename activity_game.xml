@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding ="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context='.GameActivity'>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#B07E27">
+
+        <!--  提示文本框      -->
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:padding="8dp"
+            android:text="你的分数：:" />
+        <!--  动态显示分数文本框      -->
+        <TextView
+            android:id="@+id/tv_score_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:padding="10dp"
+            android:text="0" />
+        <!--        作为newgame按钮的文本框-->
+        <TextView
+            android:id="@+id/tv_newgame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:paddingTop="8dp"
+            android:paddingLeft="20dp"
+            android:text="重新开始"/>
+    </LinearLayout>
+    <com.example.blanca.GameView
+        android:id="@+id/gv_show"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+    </com.example.blanca.GameView>
+</LinearLayout>
