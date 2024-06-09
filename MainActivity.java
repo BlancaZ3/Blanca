@@ -19,14 +19,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //找到控件
-        //声明控件
         Button mBtnLogin = findViewById(R.id.btn_login);
         mEtUser = findViewById(R.id.et_1);
         mEtPassword = findViewById(R.id.et_2);
 
-        //实现跳转
-        mBtnLogin.setOnClickListener(v -> {
+
+            mBtnLogin.setOnClickListener(v -> {
             Intent intent;
             intent = new Intent(MainActivity.this,GameActivity.class);
             startActivity(intent);

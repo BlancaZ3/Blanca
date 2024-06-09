@@ -19,7 +19,9 @@ public class GameActivity extends Activity {
 
     GameView gv;
     TextView new_game;
+    @SuppressLint("HandlerLeak")
     Handler handler=new Handler(){
+        @SuppressLint("SetTextI18n")
         @Override
         public void handleMessage(Message msg){
 
