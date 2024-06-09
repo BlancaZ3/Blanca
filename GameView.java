@@ -167,120 +167,6 @@ public class GameView extends GridLayout{
         }
     }
 
-    private void moveRight() {
-        boolean flage = false;
-        for (int y = 0; y < 4; y++) {
-            for (int x = 3; x >= 0;x--) {
-                for (int x1 = x - 1; x1 >= 0; x1--) {
-                    //当同一行为空时，不需处理
-                    if (cards[x1][y].getNum() > 0) {
-                        if (cards[x][y].getNum() < 2) {
-//将前一张卡片的值移动到当前卡片
-                            cards[x][y].setNum(cards[x1][y].getNum());
-                            cards[x1][y].setNum(0);
-                            x++;
-                            flage = true;
-                            score += 2;
-                        } else if (cards[x][y].getNum() == cards[x1][y].getNum()) {
-                            cards[x][y].setNum(cards[x][y].getNum() * 2);
-                            score += cards[x][y].getNum();
-                            cards[x1][y].setNum(0);
-                            flage = true;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (flage) {
-            creatRandomCard();
-        }
-    }
-    private void moveLeft(){
-        boolean flage = false;
-        for(int y =0;y<4;y++){
-            for(int x=0;x<4;x++){
-                for(int x1=x+1;x1<4;x1++){
-//当同一行为空时，不需处理
-                    if(cards[x1][y].getNum()> 0) {
-                        if (cards[x][y].getNum() < 2) {
-//将前一张卡片的值移动到当前卡片
-                            cards[x][y].setNum(cards[x1][y].getNum());
-                            cards[x1][y].setNum(0);
-                            x--;
-                            flage = true;
-                            score += 2;
-                        } else if (cards[x][y].getNum() == cards[x1][y].getNum()) {
-                            cards[x][y].setNum(cards[x][y].getNum() * 2);
-                            score += cards[x][y].getNum();
-                            cards[x1][y].setNum(0);
-                            flage = true;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        if(flage) {
-            creatRandomCard();
-        }
-    }
-    private void moveDown(){
-        boolean flage = false;
-        for(int x=0;x<4;x++){
-            for (int y =3;y>=0;y--){
-                for (int y1=y-1;y1>= 0;y1--){
-//当同一行为空时，不需处理
-                    if(cards[x][y1].getNum()>0){
-                        if (cards[x][y].getNum()< 2) {
-//将前一张卡片的值移动到当前卡片
-                            cards[x][y].setNum(cards[x][y1].getNum());
-                            cards[x][y1].setNum(0);
-                            y++;
-                            flage = true;
-                            score += 2;
-                        } else if(cards[x][y].getNum()== cards[x][y1].getNum()){
-                            cards[x][y].setNum(cards[x][y].getNum()* 2);
-                            score +=cards[x][y].getNum();
-                            cards[x][y1].setNum(0);
-                            flage = true;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        if(flage){
-            creatRandomCard();
-        }
-    }
-    private void moveUp(){
-        boolean flage = false;
-        for(int x=0;x<4;x++){
-            for(int y=0;y<4;y++){
-                for(int y1=y+1;y1<4;y1++){
-                    if(cards[x][y1].getNum()> 0){
-                        if(cards[x][y].getNum()<2){
-                            cards[x][y].setNum(cards[x][y1].getNum());
-                            cards[x][y1].setNum(0);
-                            y--;
-                            flage = true;
-                            score+=2;
-                        } else if(cards[x][y].getNum()== cards[x][y1].getNum()) {
-                            cards[x][y].setNum(cards[x][y].getNum() * 2);
-                            score += cards[x][y].getNum();
-                            cards[x][y1].setNum(0);
-                            flage = true;
-                        }
-                        break;}
-                }
-            }
-        }
-        if(flage) {
-            creatRandomCard();
-        }
-    }
     //游戏结束判定以及判定处理
     private void Gameover(){
         boolean OverGame=true;
@@ -300,18 +186,17 @@ public class GameView extends GridLayout{
             }
         }
         if(OverGame){
-            new AlertDialog.Builder(getContext()).setTitle("hi").setMessage("again").
-                    setPositiveButton("yes",new DialogInterface.OnClickListener(){
+            new AlertDialog.Builder(getContext()).setTitle("游戏结束了").setMessage("重新开始吗").
+                    setPositiveButton("是",new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int which){
                             //TODO Auto-generated method stub
                             GameStart();
                             score = 0;
                         }
-                    }).setNegativeButton("No", null).show();
+                    }).setNegativeButton("否", null).show();
         }
     }
-    //其他函数
     private void AddCard(int width, int height) {
         Card c;
         for (int y = 0; y < 4; y++) {
