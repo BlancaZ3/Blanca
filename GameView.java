@@ -16,7 +16,6 @@ import android.widget.GridLayout;
 import com.example.blanca.Card;
 
 public class GameView extends GridLayout{
-    private Card cards[][]=new Card[4][4];
     private Card[][] cardsMap = new Card[4][4];
     private List<Point>emptyCards=new ArrayList<>();
     Random rd=new Random();
@@ -172,15 +171,15 @@ public class GameView extends GridLayout{
         boolean OverGame=true;
         for (int y=0;y<4;y++) {
             for (int x = 0; x < 4; x++) {
-                if (cards[x][y].getNum() <= 0 ||
-                        (x > 0 && cards[x][y].getNum() ==
-                                cards[x - 1][y].getNum()) ||
-                        (x < 3 && cards[x][y].getNum() ==
-                                cards[x + 1][y].getNum()) ||
-                        (y > 0 && cards[x][y].getNum() ==
-                                cards[x][y - 1].getNum()) ||
-                        (y < 3 && cards[x][y].getNum() ==
-                                cards[x][y + 1].getNum())) {
+                if (cardsMap[x][y].getNum() <= 0 ||
+                        (x > 0 && cardsMap[x][y].getNum() ==
+                                cardsMap[x - 1][y].getNum()) ||
+                        (x < 3 && cardsMap[x][y].getNum() ==
+                                cardsMap[x + 1][y].getNum()) ||
+                        (y > 0 && cardsMap[x][y].getNum() ==
+                                cardsMap[x][y - 1].getNum()) ||
+                        (y < 3 && cardsMap[x][y].getNum() ==
+                                cardsMap[x][y + 1].getNum())) {
                     OverGame = false;
                 }
             }
@@ -202,26 +201,18 @@ public class GameView extends GridLayout{
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 c = new Card(getContext());
-                cards[x][y] = c;
+                cardsMap[x][y] = c;
                 c.setNum(0);
                 addView(c, width, height);
             }
         }
     }
 
-    @Override
-    protected void onSizeChanged(int w,int h,int oldw,int oldh) {
-        //TODO Auto-generated method stub
-        super.onSizeChanged(w, h, oldw, oldh);
-        int width = (w - 10) / 4;
-        AddCard(width, width);
-        GameStart();
-    }
     private void creatRandomCard() {
         emptyCards.clear();
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
-                if (cards[x][y].getNum() < 2) {
+                if (cardsMap[x][y].getNum() < 2) {
                     Point point = new Point(x, y);
                     emptyCards.add(point);
                 }
@@ -235,16 +226,24 @@ public class GameView extends GridLayout{
             number = 4;
         } else
             number = 2;
-        cards[p.x][p.y].setNum(number);
+        cardsMap[p.x][p.y].setNum(number);
     }
     public void GameStart() {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
-                cards[x][y].setNum(0);
+                cardsMap[x][y].setNum(0);
             }
         }
         creatRandomCard();
         creatRandomCard();
+    }
+    @Override
+    protected void onSizeChanged(int w,int h,int oldw,int oldh) {
+        //TODO Auto-generated method stub
+        super.onSizeChanged(w, h, oldw, oldh);
+        int width = (w - 10) / 4;
+        AddCard(width, width);
+        GameStart();
     }
 
 }
