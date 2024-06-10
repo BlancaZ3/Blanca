@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEtPassword = findViewById(R.id.et_2);
 
 
-            mBtnLogin.setOnClickListener(v -> {
-            Intent intent;
-            intent = new Intent(MainActivity.this,GameActivity.class);
+           mBtnLogin.setOnClickListener(v -> {Intent intent;
+          intent = new Intent(MainActivity.this,GameActivity.class);
             startActivity(intent);
-        });
+       });
 
         //匹配对应用户名和密码
         mBtnLogin.setOnClickListener(this);
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //假设正确的账号密码分别是zyz，062627
         if(username.equals("zyz")&&password.equals("062627")){
             //正确则跳转
-            intent = new Intent(MainActivity.this,GameActivity.class);
+            intent = new Intent(MainActivity.this, GameActivity.class);
             startActivity(intent);
         }//不正确,则弹出登录失败
 

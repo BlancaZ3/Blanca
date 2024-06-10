@@ -33,7 +33,6 @@
         android:background="@drawable/bg_username"
         tools:ignore="Autofill,HardcodedText,TextFields" />
 
-
     <EditText
         android:id="@+id/et_2"
         android:layout_width="match_parent"
@@ -60,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="登录"
+        android:onClick="onClick"
         tools:ignore="ButtonStyle,HardcodedText" />
 
     <Button

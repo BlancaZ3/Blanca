@@ -1,6 +1,5 @@
 package com.example.blanca;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,15 +14,14 @@ import android.widget.TextView;
 import com.example.blanca.GameView;
 
 public class GameActivity extends Activity {
-    TextView score_show;
+    private TextView score_show;
+    private GameView gv;
+    private TextView new_game;
 
-    GameView gv;
-    TextView new_game;
-    @SuppressLint("HandlerLeak")
     Handler handler=new Handler(){
-        @SuppressLint("SetTextI18n")
         @Override
         public void handleMessage(Message msg){
+            //TODO Auto-generated method stub
 
             super.handleMessage(msg);
             int num=msg.arg1;
